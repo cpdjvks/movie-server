@@ -2,7 +2,8 @@ from flask import Flask
 from flask_jwt_extended import JWTManager
 from flask_restful import Api
 from config import Config
-from resources.movie import MovieListResource, MovieResource
+from resources.movie import MovieListResource, MovieResource, MovieSearchResource
+from resources.recommend import MovieRecommendResource
 from resources.review import ReviewResource
 
 from resources.user import UserLoginResource, UserLogoutResource, UserRegisterResource, jwt_blocklist
@@ -28,7 +29,9 @@ api.add_resource(UserLogoutResource, '/user/logout')
 # movie
 api.add_resource(MovieListResource, '/movie')
 api.add_resource(MovieResource, '/movie/<int:movie_id>')
-# api.add_resource(MovieReviewResource, '/movie/review/<int:movie_id>')
+api.add_resource(MovieSearchResource, '/movie/search')
+# recommend
+api.add_resource(MovieRecommendResource, '/movie/recommend')
 # review
 api.add_resource(ReviewResource, '/review')
 
